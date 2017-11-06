@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @team.name %>
+</p>
+
+<p>
+  <strong>Members:</strong>
+</p>
+<ul>
+  <% @team.users.each do |user| %>
+    <li><%= user.email %></li>
+  <% end %>
+</ul>
+
+<% if TeamUser.where(user_id: current_user.id, team_id: @team.id).none? %>
+  <%= form_for :team_user, url: team_users_path do |f| %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :team_id, value: @team.id %>
+    <%= f.submit 'Join Team', class: 'btn btn-success' %>
+  <% end %>
+<% else %>
+  <%= link_to 'Leave Team', team_user_path(user_id: current_user.id, team_id: @team.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+  <br />
+<% end %>
+<!-- <button type="button" class="btn btn-success">Join Team</button> -->
+
+<%= link_to 'Edit', edit_team_path(@team) %> |
+<%= link_to 'Back', teams_path %>
