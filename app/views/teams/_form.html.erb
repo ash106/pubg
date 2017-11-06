@@ -11,12 +11,16 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :team_name %>
+    <%= form.text_field :name, id: :team_name, class: 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <% if team.new_record? %>
+      <%= form.submit 'Create Team', class: 'btn btn-primary' %>
+    <% else %>
+      <%= form.submit 'Edit Team', class: 'btn btn-primary' %>
+    <% end %>
   </div>
 <% end %>

@@ -1,1 +1,12 @@
 @import "bootstrap";
+
+.container {
+  padding-top: 20px;
+}
+
+#team-members {
+  padding-left: 0px;
+  li {
+    list-style: none;
+  }
+}
