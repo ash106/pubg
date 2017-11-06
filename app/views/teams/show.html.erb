@@ -24,7 +24,6 @@
   <%= link_to 'Leave Team', team_user_path(user_id: current_user.id, team_id: @team.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
   <br />
 <% end %>
-<!-- <button type="button" class="btn btn-success">Join Team</button> -->
 
 <%= link_to 'Edit', edit_team_path(@team) %> |
 <%= link_to 'Back', teams_path %>
